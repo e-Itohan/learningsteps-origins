@@ -1,7 +1,7 @@
 # 📘 LearningSteps — Origins
 
 ## Overview
-Manual deployment of the LearningSteps journal API on **Microsoft Azure** using a secure two-tier architecture. This project represents Phase 1 of the LearningSteps series and Phase 1 of a three-part cloud security series.
+Manual deployment of the LearningSteps journal API on **Microsoft Azure** using a secure two-tier architecture. This project represents Phase 1 of the LearningSteps series and Part 1 of a three-part cloud security series.
 
 **Original Curriculum:** [CyberstepsDE/learningsteps](https://github.com/CyberstepsDE/learningsteps)  
 **My Implementation:** Two-tier Azure architecture with NSG segmentation, jump host pattern, PostgreSQL configuration.
