@@ -17,7 +17,33 @@ Deploy a FastAPI + PostgreSQL journal application on Azure with:
 ---
 
 ## 🏗️ Architecture
-Internet │ ┌──────▼───────┐ │ Web-vm-ip │ (Public IP address, ports 22 & 8000) └──────┬───────┘ │ ┌──────────────────────────▼────────────────────────────────┐ │ LearningSteps-vn (VNet) 10.0.0.0/16 │ │ ├── Public subnet 10.0.0.0/24 ─ Web VM (FastAPI) │ │ └── Private subnet 10.0.1.0/24 ─ DB VM (PostgreSQL) │ └──────────────────────────────────────────────────────────┘
+
+                        Internet                           │
+                    ┌──────▼───────┐
+                    │  Web-vm-ip   │  (Public IP address)
+                    └──────┬───────┘
+                           │
+┌──────────────────────────▼────────────────────────────────┐
+│ LearningSteps-vn (VNet) 10.0.0.0/16                       │
+│                                                           │
+│ ┌─────────── Public subnet 10.0.0.0/24 ───────────────┐   │
+│ │  NSG-sg (NSG — API tier)                            │   │
+│ │  Inbound: SSH(22, key-auth) · HTTP(8000)            │   │
+│ │  ┌────────────────────┐                             │   │
+│ │  │      Web-vm        │──► FastAPI Journal API      │   │
+│ │  └────────┬───────────┘                             │   │
+│ └───────────┼──────────────────────────────────────────┘  │
+│             │ (jump-host SSH admin, SSH only via web-vm)  │
+│ ┌───────────▼─── Private subnet 10.0.1.0/24 ──────────┐   │
+│ │  NSG-db (NSG — Database tier)                       │   │
+│ │  Inbound: SSH(22) · PostgreSQL(5432)                │   │
+│ │           — source restricted to Web-vm private IP  │   │
+│ │  ┌────────────────────┐                             │   │
+│ │  │       DB-vm        │──► PostgreSQL :5432         │   │
+│ │  │  (no public IP)    │    10.0.1.4                 │   │
+│ │  └────────────────────┘                             │   │
+│ └─────────────────────────────────────────────────────┘   │
+└───────────────────────────────────────────────────────────┘
 
 ---
 
