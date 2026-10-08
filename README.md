@@ -107,3 +107,8 @@ Deploy a FastAPI + PostgreSQL journal application on Azure with:
 
 ## 🚀 Next Stage
 Phase 2 automated this architecture using Terraform + Kubernetes + CI/CD with security gates. See: [LearningSteps — Evolution](https://github.com/e-Itohan/learningsteps-evolution)
+
+---
+
+## 📃 Full Report
+[View](https://github.com/e-Itohan/e-Itohan/blob/main/reports/LearningSteps_Origins.pdf)
