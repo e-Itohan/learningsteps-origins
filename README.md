@@ -1,4 +1,4 @@
-# 📘 LearningSteps — Origins
+# 📘 LearningSteps - Origins
 
 ## Overview
 Manual deployment of the LearningSteps journal API on **Microsoft Azure** using a secure two-tier architecture. This project represents Phase 1 of the LearningSteps series and Part 1 of a three-part cloud security series.
